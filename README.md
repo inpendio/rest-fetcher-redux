@@ -269,7 +269,7 @@ helpers (deepMerge)
 ```
 This is called after data is received and unpacked from server. You can either dispatch some action from here. After this call a promise is returned with data.
 
-###-dispatch start && -dispatch end
+### -dispatch start && -dispatch end
 A call made before actual fetching has started. A dispatch function will call actionStart that will receive this params:
 ```
 name of the action
