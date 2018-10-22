@@ -120,8 +120,6 @@
     };
   };
 
-  console.log(restFetcherBase.Base, require('rest-fetcher-base'));
-
   var RFR =
   /*#__PURE__*/
   function (_Base) {
@@ -205,9 +203,7 @@
       _this.genererateInitialState = function () {
         var state = {};
         state.isLoading = false;
-        console.log(_assertThisInitialized(_assertThisInitialized(_this)));
         Object.keys(_this.reducerPool).forEach(function (k) {
-          console.log(k);
           state[k] = {
             request: '',
             params: '{}',

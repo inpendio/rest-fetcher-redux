@@ -2,8 +2,6 @@ import { isFunction } from 'lodash';
 import { Base } from 'rest-fetcher-base';
 import { object as tObject } from './Transformers';
 
-console.log(Base, require('rest-fetcher-base'));
-
 export default class RFR extends Base {
   constructor() {
     super();
@@ -89,9 +87,7 @@ export default class RFR extends Base {
   genererateInitialState = () => {
     const state = {};
     state.isLoading = false;
-    console.log(this);
     Object.keys(this.reducerPool).forEach((k) => {
-      console.log(k);
       state[k] = {
         request: '',
         params: '{}',

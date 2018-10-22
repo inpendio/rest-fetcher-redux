@@ -11,13 +11,13 @@ Original at: [https://github.com/klooperator/redux-rest-fetcher](https://github.
 ## Install
 
 ```
-npm install redux-rest-fetcher --save
+npm install rest-fetcher-redux --save
 ```
 ```
-yarn add redux-rest-fetcher
+yarn add rest-fetcher-redux
 ```
 ```
-bower install redux-rest-fetcher --save
+bower install rest-fetcher-redux --save
 ```
 
 ## Description & example
