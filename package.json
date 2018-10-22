@@ -41,6 +41,6 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/inpendio/rest-fetcher-redux"
-      },
-      "homepage": "https://github.com/inpendio/rest-fetcher-redux"
+    },
+    "homepage": "https://github.com/inpendio/rest-fetcher-redux"
 }
