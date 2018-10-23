@@ -1,12 +1,13 @@
-# react-redux-fetcher
+# rest-fetcher-redux
 
-**This library was made for my personal project. Not all use cases are tested. I welcome testers, sugestions, pull requests etc.**
+Small library for creating API endpoint calls and other fetch calls. 
+This uses 
+[https://github.com/inpendio/rest-fetcher-base](https://github.com/inpendio/rest-fetcher-base)
+and extends it for redux consuption.
 
-Small library for creating API endpoint calls and other fetch calls. Can be used in any project, but is meant to be used with redux to dispatch results to store.
 
-Small, treeshaked lodash dependency.
-
-Original at: [https://github.com/klooperator/redux-rest-fetcher](https://github.com/klooperator/redux-rest-fetcher)
+This is continuation of original project:
+[https://github.com/klooperator/redux-rest-fetcher](https://github.com/klooperator/redux-rest-fetcher)
 
 ## Install
 
