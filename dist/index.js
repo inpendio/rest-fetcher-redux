@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('lodash'), require('rest-fetcher-base')) :
   typeof define === 'function' && define.amd ? define(['exports', 'lodash', 'rest-fetcher-base'], factory) :
-  (factory((global.reduxrestfetcher = {}),global.lodash,global.restFetcherBase));
-}(this, (function (exports,lodash,restFetcherBase) {
+  (global = global || self, factory(global.reduxrestfetcher = {}, global.lodash, global.restFetcherBase));
+}(this, function (exports, lodash, restFetcherBase) {
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -296,13 +296,13 @@
 
   var index = new RFR();
 
+  exports.Api = RFR;
+  exports.array = array;
+  exports.cumulativeArray = cumulativeArray;
   exports.default = index;
   exports.object = object;
-  exports.cumulativeArray = cumulativeArray;
-  exports.array = array;
-  exports.Api = RFR;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=index.js.map
