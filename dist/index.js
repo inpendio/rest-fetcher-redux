@@ -173,6 +173,12 @@
               newState.isLoading = false;
             }
           }
+
+          if (_this.customActions[action.type]) {
+            Object.keys(_this.customActions[action.type]).forEach(function (key) {
+              newState[key] = _this.customActions[action.type][key](state[key], action);
+            });
+          }
           /* newState.isLoading = action.loading; */
 
 
@@ -267,8 +273,11 @@
       _this.addToCustomActionPool = function (_ref2, name) {
         var changeOnAction = _ref2.changeOnAction;
 
-        if (changeOnAction) {
-          _this.customActions[name] = changeOnAction;
+        if (changeOnAction && lodash.isObject(changeOnAction)) {
+          Object.keys(changeOnAction).forEach(function (k) {
+            if (!_this.customActions[k]) _this.customActions[k] = {};
+            _this.customActions[k][name] = changeOnAction[k];
+          });
         }
       };
 

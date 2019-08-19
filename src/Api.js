@@ -1,4 +1,4 @@
-import { isFunction } from 'lodash';
+import { isFunction, isObject } from 'lodash';
 import { Base } from 'rest-fetcher-base';
 import { object as tObject } from './Transformers';
 
@@ -58,6 +58,11 @@ export default class RFR extends Base {
       if (newState.isLoading && newState.isLoading.length === 0) {
         newState.isLoading = false;
       }
+    }
+    if (this.customActions[action.type]) {
+      Object.keys(this.customActions[action.type]).forEach((key) => {
+        newState[key] = this.customActions[action.type][key](state[key], action);
+      });
     }
     /* newState.isLoading = action.loading; */
     if (action.type.indexOf('_success') !== -1) {
@@ -166,11 +171,13 @@ export default class RFR extends Base {
   };
 
   addToCustomActionPool = ({ changeOnAction }, name) => {
-    if (changeOnAction) {
-      this.customActions[name] = changeOnAction;
+    if (changeOnAction && isObject(changeOnAction)) {
+      Object.keys(changeOnAction).forEach((k) => {
+        if (!this.customActions[k]) this.customActions[k] = {};
+        this.customActions[k][name] = changeOnAction[k];
+      });
     }
-  }
-
+  };
 
   /**
    * @description Function that adds a final data tranformer for future use

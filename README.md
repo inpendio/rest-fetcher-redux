@@ -288,11 +288,36 @@ call metadata
 
 ## Transformers
 
-You can import tranformers from this package:
+You can import tranformers from this package or create your own:
 ```
 import {transformers, object, array, cumulativeArray} from 'rest-fetch-redux'
 ```
 Transformers transform data before storing it to redux. Default is object and will return ```{}``` on store init. You can change that if you expect array.
 cumulativeArray ataches new data to existing array.
 
+## Custom reducers
 
+You can use a complete custom reducer for any call:
+```
+{
+    someCall:{
+        url: '/someUrl',
+        reducer: (state,action)=>{return {...state, data:action.payload}}
+    }
+}
+```
+### Responding to other actions
+
+You can add custm reducer that will be triggered on perticular actions:
+```
+{
+    someCall:{
+        url: '/someUrl',
+        changeOnAction: {
+            'logout_action': (state, action) => {
+                return { ...state, data: {/* empty all data */} };
+            },
+        },
+    }
+}
+```
