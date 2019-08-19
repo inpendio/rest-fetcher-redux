@@ -190,6 +190,8 @@
             newState[k].status = action.payload.msg.status;
             newState[k].type = action.payload.msg.type;
             newState[k].error = action.payload.error;
+          } else if (_this.customActions[k] && _this.customActions[k][action.type]) {
+            return _this.customActions[k][action.type](state, action);
           } else {
             newState[k].loading = true;
             newState[k].request = action.payload.request;
@@ -262,9 +264,17 @@
         _this.reducerPool[name] = reducer || _this.constructGenericReducer(name);
       };
 
-      _this.addToTransformerPool = function (_ref2, name) {
-        var _ref2$transformer = _ref2.transformer,
-            transformer = _ref2$transformer === void 0 ? object : _ref2$transformer;
+      _this.addToCustomActionPool = function (_ref2, name) {
+        var changeOnAction = _ref2.changeOnAction;
+
+        if (changeOnAction) {
+          _this.customActions[name] = changeOnAction;
+        }
+      };
+
+      _this.addToTransformerPool = function (_ref3, name) {
+        var _ref3$transformer = _ref3.transformer,
+            transformer = _ref3$transformer === void 0 ? object : _ref3$transformer;
 
         if (transformer && lodash.isFunction(transformer)) {
           _this.transformerPool[name] = transformer;
@@ -274,6 +284,10 @@
       _this.getReducer = function () {
         return _this.reducer;
       };
+
+      _this.customActions = {};
+
+      _this.endpointCreationPool.push(_this.addToCustomActionPool);
 
       _this.endpointCreationPool.push(_this.addToReducerPool);
 

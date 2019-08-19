@@ -5,6 +5,8 @@ import { object as tObject } from './Transformers';
 export default class RFR extends Base {
   constructor() {
     super();
+    this.customActions = {};
+    this.endpointCreationPool.push(this.addToCustomActionPool);
     this.endpointCreationPool.push(this.addToReducerPool);
     this.endpointCreationPool.push(this.addToTransformerPool);
   }
@@ -72,6 +74,8 @@ export default class RFR extends Base {
       newState[k].status = action.payload.msg.status;
       newState[k].type = action.payload.msg.type;
       newState[k].error = action.payload.error;
+    } else if (this.customActions[k] && this.customActions[k][action.type]) {
+      return this.customActions[k][action.type](state, action);
     } else {
       newState[k].loading = true;
       newState[k].request = action.payload.request;
@@ -160,6 +164,13 @@ export default class RFR extends Base {
   addToReducerPool = ({ reducer }, name) => {
     this.reducerPool[name] = reducer || this.constructGenericReducer(name);
   };
+
+  addToCustomActionPool = ({ changeOnAction }, name) => {
+    if (changeOnAction) {
+      this.customActions[name] = changeOnAction;
+    }
+  }
+
 
   /**
    * @description Function that adds a final data tranformer for future use

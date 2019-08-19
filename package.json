@@ -1,6 +1,6 @@
 {
     "name": "rest-fetcher-redux",
-    "version": "1.0.35",
+    "version": "1.0.36",
     "description": "redux integration of rest-fetcher-base",
     "main": "dist/index.js",
     "rolledup": "dist/index.js",
