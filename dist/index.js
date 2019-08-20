@@ -135,6 +135,11 @@
       _this.reducer = function () {
         var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this.genererateInitialState();
         var action = arguments.length > 1 ? arguments[1] : undefined;
+
+        if (action.type.indexOf(_this.basePrefix) === -1 && _this.customActions[action.type]) {
+          return _this.resolveCustomAction(state, action);
+        }
+
         if (action.type.indexOf(_this.basePrefix) === -1) return state;
         var name = action.type.substring(_this.basePrefix.length);
 
@@ -147,6 +152,14 @@
         }
 
         return _this.reducerPool[name](state, action);
+      };
+
+      _this.resolveCustomAction = function (state, action) {
+        var newState = Object.assign({}, state);
+        Object.keys(_this.customActions[action.type]).forEach(function (key) {
+          newState[key] = _this.customActions[action.type][key](state[key], action);
+        });
+        return newState;
       };
 
       _this.constructGenericReducer = function (k) {

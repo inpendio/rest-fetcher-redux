@@ -20,6 +20,9 @@ export default class RFR extends Base {
    * @memberof Communicator
    */
   reducer = (state = this.genererateInitialState(), action) => {
+    if (action.type.indexOf(this.basePrefix) === -1 && this.customActions[action.type]) {
+      return this.resolveCustomAction(state, action);
+    }
     if (action.type.indexOf(this.basePrefix) === -1) return state;
     let name = action.type.substring(this.basePrefix.length);
     if (name.indexOf('_success') !== -1) {
@@ -29,6 +32,14 @@ export default class RFR extends Base {
       name = name.replace('_fail', '');
     }
     return this.reducerPool[name](state, action);
+  };
+
+  resolveCustomAction = (state, action) => {
+    const newState = Object.assign({}, state);
+    Object.keys(this.customActions[action.type]).forEach((key) => {
+      newState[key] = this.customActions[action.type][key](state[key], action);
+    });
+    return newState;
   };
 
   /**
