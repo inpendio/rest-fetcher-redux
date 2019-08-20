@@ -9,6 +9,7 @@ export default class RFR extends Base {
     this.endpointCreationPool.push(this.addToCustomActionPool);
     this.endpointCreationPool.push(this.addToReducerPool);
     this.endpointCreationPool.push(this.addToTransformerPool);
+    this.endpointCreationPool.push(this.addActionNames);
   }
 
   /**
@@ -179,6 +180,14 @@ export default class RFR extends Base {
    */
   addToReducerPool = ({ reducer }, name) => {
     this.reducerPool[name] = reducer || this.constructGenericReducer(name);
+  };
+
+  addActionNames = (_, name) => {
+    this[name].ACTIONS = {
+      START: `${this.basePrefix}${name}`,
+      SUCCESS: `${this.basePrefix}${name}_success`,
+      FAIL: `${this.basePrefix}${name}_fail`,
+    };
   };
 
   addToCustomActionPool = ({ changeOnAction }, name) => {

@@ -321,3 +321,11 @@ You can add custm reducer that will be triggered on perticular actions:
     }
 }
 ```
+
+### Accessing action names
+
+```
+Api.yourCall.ACTIONS.START // action start string
+Api.yourCall.ACTIONS.SUCCESS // action success string
+Api.yourCall.ACTIONS.FAIL // action fail string
+```

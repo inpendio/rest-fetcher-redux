@@ -283,6 +283,14 @@
         _this.reducerPool[name] = reducer || _this.constructGenericReducer(name);
       };
 
+      _this.addActionNames = function (_, name) {
+        _this[name].ACTIONS = {
+          START: "".concat(_this.basePrefix).concat(name),
+          SUCCESS: "".concat(_this.basePrefix).concat(name, "_success"),
+          FAIL: "".concat(_this.basePrefix).concat(name, "_fail")
+        };
+      };
+
       _this.addToCustomActionPool = function (_ref2, name) {
         var changeOnAction = _ref2.changeOnAction;
 
@@ -314,6 +322,8 @@
       _this.endpointCreationPool.push(_this.addToReducerPool);
 
       _this.endpointCreationPool.push(_this.addToTransformerPool);
+
+      _this.endpointCreationPool.push(_this.addActionNames);
 
       return _this;
     }
