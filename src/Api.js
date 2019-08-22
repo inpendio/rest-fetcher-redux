@@ -79,7 +79,7 @@ export default class RFR extends Base {
     /* newState.isLoading = action.loading; */
     if (action.type.indexOf('_success') !== -1) {
       newState[k].loading = false;
-      newState[k].data = this.transformerPool[k](action.payload.data);
+      newState[k].data = this.transformerPool[k](action.payload.data, state[k].data);
       newState[k].ok = action.payload.msg.ok;
       newState[k].redirected = action.payload.msg.redirected;
       newState[k].status = action.payload.msg.status;
