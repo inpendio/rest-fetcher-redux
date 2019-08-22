@@ -2107,9 +2107,9 @@ resolve@^1.1.6, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.11.0, resolve@^1.3.
     path-parse "^1.0.6"
 
 rest-fetcher-base@^1.0.23:
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/rest-fetcher-base/-/rest-fetcher-base-1.0.31.tgz#8ed0dea3baedf556939dd84679cb7a9d40ab8e4e"
-  integrity sha512-uqUu0MfCOSf+jsSthxUm5nU4ozUj/84E9WgHgkQD1TmLfEeYKBKOCzztT52SXqBSy4LKmiLjiVxOimwZLIpqBg==
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/rest-fetcher-base/-/rest-fetcher-base-1.0.34.tgz#50ba9989d47914360cd3d1dbaf66ad1ade2e811c"
+  integrity sha512-XkfWgEEKBB9v3JkQ+JxWh9yLey2tjtKVx+2wKP1aUVsEnB8/RX2OPtz68XZP7N5Kg+wcH6OJCq6W0tiWcnYHtg==
   dependencies:
     lodash "4.17.15"
 
