@@ -1,6 +1,6 @@
 {
     "name": "rest-fetcher-redux",
-    "version": "1.0.44",
+    "version": "1.0.67",
     "description": "redux integration of rest-fetcher-base",
     "main": "dist/index.js",
     "rolledup": "dist/index.js",
@@ -27,7 +27,7 @@
         "rollup-plugin-babel": "^4.0.3",
         "rollup-plugin-node-resolve": "^3.4.0",
         "uglify-js": "^3.4.9",
-        "version-up": "../../version-up/"
+        "version-up": "../version-up/"
     },
     "scripts": {
         "lint": "eslint ./src",
