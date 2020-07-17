@@ -38,7 +38,7 @@
         "test": "version-up"
     },
     "dependencies": {
-        "lodash": "4.17.15",
+        "lodash": "4.17.19",
         "rest-fetcher-base": "^1.0.23"
     },
     "repository": {
